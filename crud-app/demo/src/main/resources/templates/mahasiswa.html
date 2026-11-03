@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Mahasiswa PBO_TRPL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .btn-print {
+            margin-bottom: 15px;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 14px;
+            border-radius: 4px;
+        }
+        .btn-print:hover {
+            background-color: #218838;
+        }
+        @media print {
+            .btn-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Daftar Mahasiswa PBO_TRPL</h2>
+
+    <button class="btn-print" onclick="window.print()">Cetak Halaman / PDF</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>NIM</th>
+                <th>Nama Lengkap</th>
+                <th>Email</th>
+                <th>Jurusan</th>
+                <th>Semester</th>
+                <th>IPK</th>
+                <th>Status Aktif</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="mhs : ${listMahasiswa}">
+                <td th:text="${mhs.id}">1</td>
+                <td th:text="${mhs.nim}">12345</td>
+                <td th:text="${mhs.namaLengkap}">Nama</td>
+                <td th:text="${mhs.email}">email@domain.com</td>
+                <td th:text="${mhs.jurusan}">Jurusan</td>
+                <td th:text="${mhs.semester}">1</td>
+                <td th:text="${mhs.ipk}">3.50</td>
+                <td th:text="${mhs.statusAktif ? 'Aktif' : 'Tidak Aktif'}">Aktif</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
